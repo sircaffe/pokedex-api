@@ -16,14 +16,21 @@ PokemonData = [
     }
 ];
 
-// TODO: Figure out a better way to handle pokemon data
+// TODO: Figure out a better way to handle pokemon PokemonData
 const server = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'application/json'});
+
+    const url = new URL("http://" + ADDR + ":" + PORT + req.url);
     
-    let opts = req.url.substring(1).split("?");
-    
-    if (opts[0] == "pokemon") {
-        switch(opts[1]) {
+    if (url.pathname == "/") {
+        res.end(JSON.stringify({
+            message: "This is home /.",
+            code: 200
+        }));
+    } else if (url.pathname == "/all") {
+        res.end(JSON.stringify(PokemonData));
+    } else if (url.pathname == "/search") {
+        switch(url.search.substring(1)) {
             case "bulbasaur":
                 res.end(JSON.stringify(PokemonData[0]));
                 break;
@@ -38,7 +45,7 @@ const server = http.createServer((req, res) => {
         }
     } else {
         res.end(JSON.stringify({
-            message: "Hi there.",
+            message: "Not sure why you're here.",
             code: 200
         }));
     }
