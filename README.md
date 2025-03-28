@@ -9,13 +9,13 @@ $ Listening to port 8080...
 ```
 And then send requests
 ```console
-$ curl 127.0.0.1:8080
-{"message":"Hi there.","code":200}
+$ curl 127.0.0.1:8080/
+{"message":"This is home /","code":200}
 ```
 
 ## Entry Points
 ```console
-.../pokemon
-.../pokemon?bulbasaur
-.../pokemon?pikachu
+.../all
+.../search?bulbasaur
+.../search?pikachu
 ```
