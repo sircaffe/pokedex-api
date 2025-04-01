@@ -1,6 +1,9 @@
 ## About
 Simple Pokedex REST api written in pure Javascript.
 
+> [!WARNING]
+> In early stages of development. It is currently unusable!
+
 ## Quick Start
 Start server (it's hardcoded on localhost for now)
 ```console
